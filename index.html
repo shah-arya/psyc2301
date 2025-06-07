@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicotine in Every Puff | Youth Vaping Awareness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --secondary: #E74C3C;
+            --accent: #3498DB;
+            --light: #ECF0F1;
+            --dark: #1A252F;
+            --success: #27AE60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,261.3C672,256,768,224,864,197.3C960,171,1056,149,1152,165.3C1248,181,1344,235,1392,261.3L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+            opacity: 0.1;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .stat-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            z-index: -1;
+            transition: height 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+        
+        .stat-card:hover::before {
+            height: 100%;
+        }
+        
+        .stat-card:hover .stat-number,
+        .stat-card:hover p,
+        .stat-card:hover .stat-source {
+            color: white;
+            
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            transition: color 0.9s;
+        }
+        
+        .stat-source {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 1rem;
+            transition: color 0.9s;
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 3rem 0;
+            counter-reset: step-counter;
+        }
+        
+        .step {
+            flex: 0 0 calc(16.66% - 20px);
+            text-align: center;
+            position: relative;
+            margin: 0 10px;
+            padding-top: 40px;
+            perspective: 1000px;
+            min-height: 280px;
+        }
+        
+        .step-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        
+        .step:hover .step-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .step-front, .step-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .step-front {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .step-back {
+            background-color: var(--primary);
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        
+        .step-back img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: white;
+            font-weight: bold;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            transition: background 0.4s;
+        }
+        
+        .step:hover::before {
+            background: var(--secondary);
+        }
+        
+        .step-content {
+            padding: 60px 15px 20px;
+            height: 100%;
+        }
+        
+        .step-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .risk-image {
+            display: block;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .action-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            text-align: center;
+            border-top: 4px solid var(--success);
+            transition: all 0.3s ease;
+        }
+        
+        .action-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .action-icon {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 1rem;
+        }
+        
+        .action-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: white;
+            z-index: -1;
+            transition: width 0.4s ease;
+        }
+        
+        .btn:hover {
+            color: var(--accent);
+        }
+        
+        .btn:hover::before {
+            width: 100%;
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            border-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            color: var(--secondary);
+        }
+        
+        .take-home {
+            background: linear-gradient(135deg, var(--secondary) 0%, #C0392B 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .take-home::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,261.3C672,256,768,224,864,197.3C960,171,1056,149,1152,165.3C1248,181,1344,235,1392,261.3L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+            opacity: 0.1;
+        }
+        
+        .take-home h2 {
+            font-size: 2.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.3;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .references {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .references h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--light);
+        }
+        
+        .references ul {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 20px;
+        }
+        
+        .references li {
+            margin-bottom: 1rem;
+        }
+        
+        .references a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .references a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .partner-logo {
+            height: 50px;
+            filter: grayscale(100%) brightness(200%);
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .step {
+                flex: 0 0 calc(50% - 20px);
+                margin-bottom: 30px;
+                min-height: 250px;
+            }
+            
+            .videos-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .step {
+                flex: 0 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <h1>NICOTINE IN EVERY PUFF</h1>
+            <div class="tagline">Vape today. Hooked tomorrow.</div>
+            <p>An awareness campaign targeting youth vaping in Canada</p>
+        </div>
+    </header>
+
+    <!-- Introduction Section -->
+    <section id="intro">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why It Matters</h2>
+                <p>Vaping isn't the safe alternative it's marketed to be</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">21%</div>
+                    <p>Canadian students in grades 7–12 uses a vaping product</p>
+                    <div class="stat-source">Source: CSTADS</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">69%</div>
+                    <p>Youth who vaped had never smoked a traditional cigarette</p>
+                    <div class="stat-source">Source: Health Canada</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">31%</div>
+                    <p>Youth 15–19 who vape, cite "vaping to reduce stress" as their reason</p>
+                    <div class="stat-source">Source: Canada.ca</div>
+                </div>
+            </div>
+            
+            <div class="content">
+                <p>Vaping among Canadian youth has reached alarming levels, with many teens unaware of the risks and addictive nature of nicotine. The misconception that vaping is a "safe" alternative to smoking has contributed to its widespread adoption among teenagers who have never touched a cigarette.</p>
+                
+                <p>What many don't realize is that Canadian e-liquids contain nicotine levels up to <strong>three times higher</strong> than European limits, significantly increasing addiction risk. Early nicotine exposure impairs developing brains, affecting memory, attention, and impulse control.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>How Vaping Gets You Hooked</h2>
+                <p>The chain reaction of addiction starts with just one puff</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-inner">
+                        <div class="step-front">
+                            <div class="step-content">
+                                <div class="step-title">Curiosity & Stress</div>
+                                <p>Peer pressure, marketing, or stress relief lead to first try</p>
+                            </div>
+                        </div>
+                        <div class="step-back">
+                            <img src="Stress.png" alt="Curiosity and Stress">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-inner">
+                        <div class="step-front">
+                            <div class="step-content">
+                                <div class="step-title">First Vape</div>
+                                <p>Just 1-2 puffs introduce nicotine to your system</p>
+                            </div>
+                        </div>
+                        <div class="step-back">
+                            <img src="first_vape.jpg" alt="First Vape">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-inner">
+                        <div class="step-front">
+                            <div class="step-content">
+                                <div class="step-title">Nicotine Rush</div>
+                                <p>Brain receptors are activated, creating temporary pleasure</p>
+                            </div>
+                        </div>
+                        <div class="step-back">
+                            <img src="nicotine-addiction.jpg" alt="Nicotine Rush">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-inner">
+                        <div class="step-front">
+                            <div class="step-content">
+                                <div class="step-title">Craving Next Vape</div>
+                                <p>Brain starts demanding more nicotine to feel "normal"</p>
+                            </div>
+                        </div>
+                        <div class="step-back">
+                            <img src="Vaping_cycle.png" alt="Craving Next Vape">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-inner">
+                        <div class="step-front">
+                            <div class="step-content">
+                                <div class="step-title">Daily Habit</div>
+                                <p>Vaping becomes a regular part of your routine</p>
+                            </div>
+                        </div>
+                        <div class="step-back">
+                            <img src="10-tips-to-stop-vaping.webp" alt="Daily Habit">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-inner">
+                        <div class="step-front">
+                            <div class="step-content">
+                                <div class="step-title">Addiction</div>
+                                <p>Physical dependence makes quitting extremely difficult</p>
+                            </div>
+                        </div>
+                        <div class="step-back">
+                            <img src="nicotine-withdrawal.jpg" alt="Addiction">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <p><strong>Even one vape can set off the chain reaction.</strong></p>
+                <p> Nicotine addiction can develop faster than with traditional cigarettes due to high nicotine concentrations and appealing flavors.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section id="videos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Understanding the Risks</h2>
+                <p>Learn more about the dangers of youth vaping</p>
+            </div>
+            
+            <img src="nicotine-addiction_use.jpg" alt="Nicotine Addiction Facts" class="risk-image">
+            
+            <div class="videos-container">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/NNTUudUxn6k" title="Vaping Risks Explained" allowfullscreen></iframe>
+                </div>
+                
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/U7vZ02nvVl4" title="Youth Vaping Awareness" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Action Section -->
+    <section id="action">
+        <div class="container">
+            <div class="section-title">
+                <h2>Take Action Now</h2>
+                <p>Resources and steps to protect yourself or someone you care about</p>
+            </div>
+            
+            <div class="action-grid">
+                <div class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="action-title">Educate Yourself</h3>
+                    <p>Learn the real risks and understand the tactics used to market vaping to youth</p>
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7455879/" target="_blank" class="btn">Learn More</a>
+                </div>
+                
+                <div class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="action-title">Talk About It</h3>
+                    <p>Start conversations with friends about the risks of vaping and how to resist peer pressure</p>
+                    <a href="https://www.lung.org/quit-smoking/helping-teens-quit/talk-about-vaping/conversation-guide" target="_blank" class="btn">Conversation Tips</a>
+                </div>
+                
+                <div class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="action-title">Get Support</h3>
+                    <p>Access free resources to quit vaping or help someone else quit</p>
+                    <a href="https://www.canada.ca/en/health-canada/services/substance-use/get-help-with-substance-use.html" target="_blank" class="btn">Quit Resources</a>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem; text-align: center;">
+                <h3>For Parents and Caregivers</h3>
+                <p>If your teen is curious about vaping:</p>
+                <ul style="list-style: none; margin: 1rem 0;">
+                    <li><i class="fas fa-check" style="color: var(--success);"></i> Set clear rules around vaping</li>
+                    <li><i class="fas fa-check" style="color: var(--success);"></i> Encourage healthy stress outlets (sports, art, talking)</li>
+                    <li><i class="fas fa-check" style="color: var(--success);"></i> Contact your local Public Health unit for resources</li>
+                </ul>
+                <a href="https://www.lung.ca/sites/default/files/Disease%20Fact%20Sheets/Vaping%20%26%20smoking%20resources/Vaping%20Conversation%20Guide%20for%20Parents%2008Mar24.pdf" target="_blank" class="btn btn-secondary">Parent Resources</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Take Home Message -->
+    <section class="take-home">
+        <h2>Your First Vape Can Be Your Last Chance — Choose BREATHE Over BUZZ.</h2>
+    </section>
+
+    <!-- References -->
+    <section class="references">
+        <div class="container">
+            <h3>References & Sources</h3>
+            <ul>
+                <li>Health Canada. (2024). Canadian Student Tobacco, Alcohol and Drugs Survey (Grades 7–12): 2021–22 results. Retrieved from <a href="https://www.canada.ca" target="_blank">https://www.canada.ca</a></li>
+                <li>Public Health Agency of Canada. (2023). Canadian Tobacco and Nicotine Survey 2022. Ottawa, ON: PHPB, Health Canada.</li>
+                <li>Canadian Lung Association. (2024). Vaping Statistics. Retrieved from <a href="https://www.lung.ca" target="_blank">https://www.lung.ca</a></li>
+                <li>UWaterloo News. (2025, March 13). "Teens who vape had similar nicotine exposure to smokers" [Press release]. Canadian Vaping Association.</li>
+                <li>Fraser Health Authority. (2023). Youth Vaping Rates in B.C. Retrieved from <a href="https://www.fraserhealth.ca" target="_blank">https://www.fraserhealth.ca</a></li>
+                <li>North America VID Study Team. (2022). Neurocognitive Effects of E-cigarettes on Adolescents. Brain, Behavior, and Immunity, 98, 123–131.</li>
+                <li>Health Canada. (2024). EVALI and Vaping‐Associated Pulmonary Infections—Data & Trends.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="partner-logos">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Health_Canada_logo_%28english%29.svg/320px-Health_Canada_logo_%28english%29.svg.png" alt="Health Canada" class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/71/Canadian_Lung_Association_logo.svg/320px-Canadian_Lung_Association_logo.svg.png" alt="Canadian Lung Association" class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Government_of_Canada_logo_%28en%29.svg/320px-Government_of_Canada_logo_%28en%29.svg.png" alt="Government of Canada" class="partner-logo">
+        </div>
+        <p>&copy; 2025 Nicotine in Every Puff Campaign. All rights reserved.</p>
+        <p>This campaign is based on valid, relevant, and referenced evidence. Designed for educational purposes.</p>
+    </footer>
+
+    <script>
+        // Animation for stat cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const statCards = document.querySelectorAll('.stat-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            statCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Flip cards animation
+            const flipCards = document.querySelectorAll('.step');
+            flipCards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>
